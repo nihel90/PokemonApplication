@@ -40,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -72,15 +73,17 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hiltCompiler)
     kapt(libs.hiltAndroidCompiler)
-    kapt(libs.okHttpLoggingInterceptor)
     kapt(libs.chucker)
     kapt(libs.chuckerNoOp)
     kapt(libs.testingJunitJupiterEngine)
     kapt(libs.testingJunitJupiterPlugin)
     kapt(libs.testingMockk)
     kapt(libs.testingCoroutines)
-    releaseImplementation(libs.retrofit)
-    debugImplementation(libs.retrofitGson)
+    implementation(libs.retrofit)
+    implementation(libs.retrofitGson)
+    implementation(libs.okhttp)
+    implementation(libs.okHttpLoggingInterceptor)
+    implementation(libs.converterJackson)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -13,7 +13,7 @@ composeConstraintLayout = "1.0.1"
 appcompat = "1.7.0"
 material = "1.12.0"
 retrofit = "2.9.0"
-okhttpLoggingInterceptor = "4.11.0"
+okhttp = "4.9.3"
 chucker = "4.0.0"
 hilt = "2.50"
 hiltCompiler = "1.2.0"
@@ -46,7 +46,9 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofitGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
-okHttpLoggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpLoggingInterceptor" }
+converterJackson = { group = "com.squareup.retrofit2", name = "converter-jackson", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okHttpLoggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
 chuckerNoOp = { group = "com.github.chuckerteam.chucker", name = "library-no-op", version.ref = "chucker" }
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
