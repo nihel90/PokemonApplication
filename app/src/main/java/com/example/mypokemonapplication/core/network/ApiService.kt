@@ -1,5 +1,6 @@
 package com.example.mypokemonapplication.core.network
 
+import com.example.mypokemonapplication.data.model.JsonPokemons
 import retrofit2.Response
 import retrofit2.http.GET
 
