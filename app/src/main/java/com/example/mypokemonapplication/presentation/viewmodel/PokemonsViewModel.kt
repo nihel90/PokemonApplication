@@ -21,7 +21,7 @@ class PokemonsViewModel @Inject constructor(
         MutableStateFlow<PokemonsUiState>(value = PokemonsUiState.Loading)
     val pokemonsUiState: StateFlow<PokemonsUiState> = _pokemonsUiState
 
-    fun getAllLeagues() = viewModelScope.launch(context = dispatcher) {
+    fun getAllPokemons() = viewModelScope.launch(context = dispatcher) {
         _pokemonsUiState.value = interactor.getAllPokemons().let { pokemons ->
             if (pokemons is Result.Success) {
                 PokemonsUiState.Ready(pokemons = pokemons.data.map { it.name })
