@@ -1,4 +1,4 @@
-package com.example.mypokemonapplication
+package com.example.mypokemonapplication.presentation.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,11 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import com.example.mypokemonapplication.data.repository.PokemonsRepositoryImpl
+import androidx.lifecycle.repeatOnLifecycle
+import com.example.mypokemonapplication.presentation.state.PokemonsUiState
+import com.example.mypokemonapplication.presentation.viewmodel.PokemonsViewModel
 import com.example.mypokemonapplication.ui.theme.MyPokemonApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,7 +25,7 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
 
     @Inject
-    lateinit var repository: PokemonsRepositoryImpl
+    lateinit var viewModel: PokemonsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +41,20 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            try {
-                val result = repository.fetchAllPokemons()
-                println("test service $result")
-            } catch (e: Exception) {
-                println("test service $e")            }
+        viewModel.getAllLeagues()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.pokemonsUiState.collect { list ->
+                    when (list) {
+                        is PokemonsUiState.Idle -> println("idle")
+                        is PokemonsUiState.Loading -> println("loading")
+                        is PokemonsUiState.Ready -> println(
+                            println("ready : here pokemon list ${list.pokemons}")
+                        )
+                        is PokemonsUiState.Error -> println("Error")
+                    }
+                }
+            }
         }
     }
 }
