@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.lifecycleScope
-import com.example.mypokemonapplication.data.datasource.PokemonsDataSource
+import com.example.mypokemonapplication.data.repository.PokemonsRepositoryImpl
 import com.example.mypokemonapplication.ui.theme.MyPokemonApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +23,7 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
 
     @Inject
-    lateinit var dataSource: PokemonsDataSource
+    lateinit var repository: PokemonsRepositoryImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,11 +41,10 @@ class MainActivity : ComponentActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val result = dataSource.execute(param = Unit)
-                println("testservice ${result.pokemons}")
+                val result = repository.fetchAllPokemons()
+                println("test service $result")
             } catch (e: Exception) {
-                println("testservice $e")
-            }
+                println("test service $e")            }
         }
     }
 }
