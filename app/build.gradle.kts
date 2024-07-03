@@ -75,10 +75,11 @@ dependencies {
     kapt(libs.hiltAndroidCompiler)
     kapt(libs.chucker)
     kapt(libs.chuckerNoOp)
-    kapt(libs.testingJunitJupiterEngine)
-    kapt(libs.testingJunitJupiterPlugin)
+    testImplementation(libs.testingJunitJupiterEngine)
+    testImplementation(libs.testingJunitJupiterPlugin)
     kapt(libs.testingMockk)
     kapt(libs.testingCoroutines)
+
     implementation(libs.retrofit)
     implementation(libs.retrofitGson)
     implementation(libs.okhttp)
@@ -88,4 +89,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.testingAssert)
+    testImplementation(libs.testingMockitoKotlin)
+    testImplementation(libs.testingMockitoJunit)
+
+    testImplementation(libs.bundles.commonTest)
+    testImplementation(libs.testingJunitJupiterApi)
 }

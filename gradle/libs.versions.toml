@@ -13,7 +13,7 @@ composeConstraintLayout = "1.0.1"
 appcompat = "1.7.0"
 material = "1.12.0"
 retrofit = "2.9.0"
-okhttp = "4.9.3"
+okhttp = "4.11.0"
 chucker = "4.0.0"
 hilt = "2.50"
 hiltCompiler = "1.2.0"
@@ -21,6 +21,9 @@ hiltNavigationCompose = "1.2.0"
 testingJunitJupiter = "5.9.3"
 testingJunitJupiterPlugin = "1.8.2.0"
 testingMockk = "1.12.2"
+testingMockitoJunit = "5.4.0"
+testingMockitoKotlin = "5.0.0"
+testingAssert = "3.10.0"
 testingKotlinCoroutines = "1.7.3"
 coilCompose = "2.4.0"
 turbine = "1.0.0"
@@ -63,6 +66,9 @@ testingJunitJupiterPlugin = { group = "de.mannodermaus.gradle.plugins", name = "
 testingMockk = { group = "io.mockk", name = "mockk", version.ref = "testingMockk" }
 testingCoroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "testingKotlinCoroutines" }
 testingTurbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+testingMockitoKotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "testingMockitoKotlin"}
+testingMockitoJunit = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "testingMockitoJunit"}
+testingAssert = { group = "org.assertj", name = "assertj-core", version.ref = "testingAssert"}
 
 [bundles]
 commonTest = ["testingMockk", "testingCoroutines", "testingTurbine"]
