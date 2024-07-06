@@ -27,6 +27,7 @@ testingAssert = "3.10.0"
 testingKotlinCoroutines = "1.7.3"
 coilCompose = "2.4.0"
 turbine = "1.0.0"
+lifecycleRuntimeComposeAndroid = "2.8.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -70,6 +71,7 @@ testingTurbine = { group = "app.cash.turbine", name = "turbine", version.ref = "
 testingMockitoKotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "testingMockitoKotlin"}
 testingMockitoJunit = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "testingMockitoJunit"}
 testingAssert = { group = "org.assertj", name = "assertj-core", version.ref = "testingAssert"}
+androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
 
 [bundles]
 commonTest = ["testingMockk", "testingCoroutines", "testingTurbine"]

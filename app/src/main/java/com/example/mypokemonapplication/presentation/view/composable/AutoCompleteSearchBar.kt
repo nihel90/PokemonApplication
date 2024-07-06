@@ -7,6 +7,7 @@ import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -19,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -72,10 +74,11 @@ fun AutoCompleteSearchBar(
             interactionSource = textFieldInteractionSource,
             value = searchText,
             onValueChange = { typedText ->
-                pokemons = if (typedText.isBlank())
+                pokemons = if (typedText.isBlank()) {
                     emptyList()
-                else
+                } else {
                     items.filter { it.lowercase().contains(typedText.lowercase()) }
+                }
                 searchText = typedText
             },
             label = { Text(stringResource(id = R.string.search_bar_placeholder)) },
@@ -94,6 +97,8 @@ fun AutoCompleteSearchBar(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .background(Color.LightGray)
+                    .clip(shape = RoundedCornerShape(0.dp, 0.dp, 16.dp, 16.dp))
                     .heightIn(0.dp, 138.dp)
             ) {
                 items(pokemons) { item ->
@@ -113,6 +118,7 @@ fun AutoCompleteSearchBar(
                     }
                 }
             }
+
         }
     }
 }
