@@ -12,6 +12,6 @@ class PokemonsDataSource @Inject constructor(
 
     @Throws(Exception::class)
     override suspend fun execute(param: Unit): JsonPokemons {
-        return apiService.getAllPokemons().body() ?: throw Exception()
+        return apiService.fetchAllPokemons().body() ?: throw Exception()
     }
 }

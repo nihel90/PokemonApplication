@@ -10,7 +10,11 @@ fun MainScreen(
     viewModel: PokemonsViewModel
 ) {
     val allPokemonsUiState by viewModel.pokemonsUiState.collectAsStateWithLifecycle()
+    val pokemonDetailsUiState by viewModel.pokemonDetailsUiState.collectAsStateWithLifecycle()
+
     MainScreenContent(
-        allPokemonsUiState = allPokemonsUiState
+        allPokemonsUiState = allPokemonsUiState,
+        pokemonDetailsUiState = pokemonDetailsUiState,
+        onPokemonSearch = { viewModel.getPokemonDetails(name = it) },
     )
 }
