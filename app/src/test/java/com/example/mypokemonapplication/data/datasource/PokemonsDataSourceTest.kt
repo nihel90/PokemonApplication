@@ -25,7 +25,7 @@ class PokemonsDataSourceTest {
     @Test
     fun `execute - when response body is not null - then should return JsonPokemons`() = runTest {
         // Given
-        given(apiService.getAllPokemons()).willReturn(Response.success(AllPokemonsJsonResponseMock.jsonPokemons))
+        given(apiService.fetchAllPokemons()).willReturn(Response.success(AllPokemonsJsonResponseMock.jsonPokemons))
 
         // When
         val result = dataSource.execute(param = Unit)
@@ -37,7 +37,7 @@ class PokemonsDataSourceTest {
     @Test
     fun `execute - when response body is null - then should throw exception`() = runTest {
         // Given
-        given(apiService.getAllPokemons()).willReturn(Response.success(null))
+        given(apiService.fetchAllPokemons()).willReturn(Response.success(null))
 
         // Then
         assertThrows<Exception> {

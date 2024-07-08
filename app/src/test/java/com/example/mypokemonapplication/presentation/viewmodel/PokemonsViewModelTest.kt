@@ -1,8 +1,10 @@
 package com.example.mypokemonapplication.presentation.viewmodel
 
 import com.example.mypokemonapplication.core.Result
-import com.example.mypokemonapplication.data.mock.AllpokemonsMock
+import com.example.mypokemonapplication.data.mock.AllPokemonsMock
+import com.example.mypokemonapplication.data.mock.PokemonDetailsMock
 import com.example.mypokemonapplication.domain.interactor.PokemonsInteractor
+import com.example.mypokemonapplication.presentation.state.PokemonDetailsUiState
 import com.example.mypokemonapplication.presentation.state.PokemonsUiState
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
@@ -48,7 +50,7 @@ class PokemonsViewModelTest {
     fun `getAllPokemons - when Result is Success - then should update PokemonsUiState`() =
         runTest {
             // Given
-            given(pokemonsInteractor.getAllPokemons()).willReturn(Result.Success(data = AllpokemonsMock.pokemons))
+            given(pokemonsInteractor.getAllPokemons()).willReturn(Result.Success(data = AllPokemonsMock.pokemons))
 
             // When
             pokemonsViewModel.getAllPokemons()
@@ -80,6 +82,40 @@ class PokemonsViewModelTest {
             scheduler.advanceUntilIdle()
             assertThat(pokemonsViewModel.pokemonsUiState.value).isEqualTo(
                 PokemonsUiState.Error
+            )
+        }
+
+    @Test
+    fun `getPokemonDetails - when Result is Success - then should update PokemonDetailsUiState`() =
+        runTest {
+            // Given
+            given(pokemonsInteractor.getPokemonsDetails("pokemonName")).willReturn(Result.Success(data = PokemonDetailsMock.pokemonDetails))
+
+            // When
+            pokemonsViewModel.getPokemonDetails("pokemonName")
+
+            // Then
+            scheduler.advanceUntilIdle()
+            assertThat(pokemonsViewModel.pokemonDetailsUiState.value).isEqualTo(
+                PokemonDetailsUiState.Ready(
+                    pokemonsDetails = PokemonDetailsMock.pokemonDetails
+                )
+            )
+        }
+
+    @Test
+    fun `getPokemonDetails - when Result is Failure - then should update PokemonDetailsUiState`() =
+        runTest {
+            // Given
+            given(pokemonsInteractor.getPokemonsDetails("pokemonName")).willReturn(Result.Failure())
+
+            // When
+            pokemonsViewModel.getPokemonDetails("pokemonName")
+
+            // Then
+            scheduler.advanceUntilIdle()
+            assertThat(pokemonsViewModel.pokemonDetailsUiState.value).isEqualTo(
+                PokemonDetailsUiState.Error
             )
         }
 }

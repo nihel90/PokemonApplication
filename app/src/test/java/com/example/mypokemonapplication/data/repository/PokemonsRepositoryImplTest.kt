@@ -3,7 +3,7 @@ package com.example.mypokemonapplication.data.repository
 import com.example.mypokemonapplication.core.Result
 import com.example.mypokemonapplication.data.datasource.PokemonsDataSource
 import com.example.mypokemonapplication.data.mock.AllPokemonsJsonResponseMock
-import com.example.mypokemonapplication.data.mock.AllpokemonsMock
+import com.example.mypokemonapplication.data.mock.AllPokemonsMock
 import com.example.mypokemonapplication.data.transformer.PokemonsToDomainTransformer
 import com.example.mypokemonapplication.domain.model.PokemonEntity
 import kotlinx.coroutines.test.runTest
@@ -33,14 +33,14 @@ class PokemonsRepositoryImplTest {
             // Given
             given(dataSource.execute(param = Unit)).willReturn(AllPokemonsJsonResponseMock.jsonPokemons)
             given(transformer.toDomain(jsonPokemons = AllPokemonsJsonResponseMock.jsonPokemons)).willReturn(
-                AllpokemonsMock.pokemons
+                AllPokemonsMock.pokemons
             )
 
             // When
             val result = repository.fetchAllPokemons()
 
             // Then
-            assertThat(result).isEqualTo(Result.Success(data = AllpokemonsMock.pokemons))
+            assertThat(result).isEqualTo(Result.Success(data = AllPokemonsMock.pokemons))
         }
 
     @Test

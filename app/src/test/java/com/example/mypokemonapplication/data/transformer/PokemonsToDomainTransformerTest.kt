@@ -1,7 +1,7 @@
 package com.example.mypokemonapplication.data.transformer
 
 import com.example.mypokemonapplication.data.mock.AllPokemonsJsonResponseMock
-import com.example.mypokemonapplication.data.mock.AllpokemonsMock
+import com.example.mypokemonapplication.data.mock.AllPokemonsMock
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -20,6 +20,6 @@ class PokemonsToDomainTransformerTest {
         val result = transformer.toDomain(AllPokemonsJsonResponseMock.jsonPokemons)
 
         // Then
-        assertThat(result).isEqualTo(AllpokemonsMock.pokemons)
+        assertThat(result).isEqualTo(AllPokemonsMock.pokemons)
     }
 }

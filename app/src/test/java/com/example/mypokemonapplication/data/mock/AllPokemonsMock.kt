@@ -2,7 +2,7 @@ package com.example.mypokemonapplication.data.mock
 
 import com.example.mypokemonapplication.domain.model.PokemonEntity
 
-object AllpokemonsMock {
+object AllPokemonsMock {
 
     val pokemons = listOf(
         PokemonEntity(name = "Bolbasaur", url = "heloo je suis Bolbasaur"),
