@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.lifecycle.runtime.compose.android)
+    implementation(libs.compose.navigation.runtime)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui)
@@ -67,6 +68,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.coilCompose)
+    implementation (libs.compose.navigation)
+  //  implementation (libs.compose.)
 
     // Coroutines
     implementation(libs.androidx.lifecycle.runtime.ktx)

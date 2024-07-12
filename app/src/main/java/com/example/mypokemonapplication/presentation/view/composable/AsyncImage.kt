@@ -12,7 +12,9 @@ import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
 
 @Composable
-fun AsyncImage(url: String) {
+fun AsyncImage(
+    modifier: Modifier,
+    url: String) {
     val painter: Painter = rememberAsyncImagePainter(
         ImageRequest.Builder(LocalContext.current).data(data = url)
             .apply(block = fun ImageRequest.Builder.() {
@@ -20,7 +22,7 @@ fun AsyncImage(url: String) {
             }).build()
     )
     Image(
-        modifier = Modifier.size(200.dp),
+        modifier = modifier.size(200.dp),
         painter = painter,
         contentDescription = null
     )

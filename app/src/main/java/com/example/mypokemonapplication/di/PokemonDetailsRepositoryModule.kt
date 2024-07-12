@@ -14,7 +14,7 @@ import dagger.hilt.android.components.ActivityComponent
 class PokemonDetailsRepositoryModule {
 
     @Provides
-    fun provideTeamsRepository(
+    fun providePokemonDetailsRepository(
         pokemonDetailsDataSource: PokemonDetailsDataSource,
         pokemonDetailTransformer: PokemonDetailsToDomainTransformer
     ): PokemonDetailsRepository = PokemonDetailsRepositoryImpl(

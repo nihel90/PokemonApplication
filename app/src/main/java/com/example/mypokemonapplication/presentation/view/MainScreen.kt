@@ -7,7 +7,8 @@ import com.example.mypokemonapplication.presentation.viewmodel.PokemonsViewModel
 
 @Composable
 fun MainScreen(
-    viewModel: PokemonsViewModel
+    viewModel: PokemonsViewModel,
+    onPokemonClick: (String) -> Unit
 ) {
     val allPokemonsUiState by viewModel.pokemonsUiState.collectAsStateWithLifecycle()
     val pokemonDetailsUiState by viewModel.pokemonDetailsUiState.collectAsStateWithLifecycle()
@@ -16,5 +17,6 @@ fun MainScreen(
         allPokemonsUiState = allPokemonsUiState,
         pokemonDetailsUiState = pokemonDetailsUiState,
         onPokemonSearch = { viewModel.getPokemonDetails(name = it) },
+        onPokemonClick = onPokemonClick
     )
 }

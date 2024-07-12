@@ -1,6 +1,7 @@
 package com.example.mypokemonapplication.presentation.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -37,6 +38,7 @@ fun MainScreenContent(
     allPokemonsUiState: PokemonsUiState,
     pokemonDetailsUiState: PokemonDetailsUiState,
     onPokemonSearch: (String) -> Unit,
+    onPokemonClick: (String) -> Unit,
 ) {
     ScreenContent(hasToolbar = false) {
         var allPokemons by remember { mutableStateOf(emptyList<String>()) }
@@ -100,7 +102,13 @@ fun MainScreenContent(
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        AsyncImage(url = pokemonDetails.sprites?.frontDefault.toString())
+                        AsyncImage(
+                            modifier = Modifier
+                                .clickable {
+                                    onPokemonClick(pokemonDetails.id.toString())
+                                },
+                            url = pokemonDetails.sprites?.frontDefault.toString()
+                        )
                         pokemonDetails.name?.let { pokemonDetails ->
                             Text(
                                 modifier = Modifier
@@ -150,6 +158,7 @@ fun MainScreenPreview() {
                 sprites = Sprites()
             )
         ),
-        onPokemonSearch = {}
+        onPokemonSearch = {},
+        onPokemonClick = {}
     )
 }

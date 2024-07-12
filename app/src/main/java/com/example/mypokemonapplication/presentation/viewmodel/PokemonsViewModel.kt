@@ -11,6 +11,7 @@ import com.example.mypokemonapplication.presentation.state.PokemonsUiState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,7 +22,8 @@ class PokemonsViewModel @Inject constructor(
 
     private val _pokemonsUiState =
         MutableStateFlow<PokemonsUiState>(value = PokemonsUiState.Loading)
-    val pokemonsUiState: StateFlow<PokemonsUiState> = _pokemonsUiState
+  //  val pokemonsUiState: StateFlow<PokemonsUiState> = _pokemonsUiState
+    val pokemonsUiState = _pokemonsUiState.asStateFlow()
 
     private val _pokemonDetailsUiState =
         MutableStateFlow<PokemonDetailsUiState>(value = PokemonDetailsUiState.Idle)
